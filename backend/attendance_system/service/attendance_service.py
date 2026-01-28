@@ -24,18 +24,20 @@ class AttendanceService:
 
         for student in students:
             for emb in student["embeddings"]:
-                score = cosine_similarity(
-                    [new_emb], [emb]
-                )[0][0]
-
+                score = cosine_similarity([new_emb], [emb])[0][0]
                 if score > best_score:
                     best_score = score
                     best_student = student
 
         if best_score < AttendanceService.THRESHOLD:
-            return {"status": "unknown"}
+            return {
+                "status": "unknown",
+                "time": datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+            }
 
-        now = datetime.now().strftime("%H:%M:%S")
+        now = datetime.now()
+        time_str = now.strftime("%H:%M:%S")
+        date_str = now.strftime("%d-%m-%Y")
 
         MongoDB.get_collection("classes").update_one(
             {
@@ -46,7 +48,8 @@ class AttendanceService:
                 "$set": {
                     "ListOfStudents.ds.$.RollCall_time.FaceID": 1,
                     "ListOfStudents.ds.$.RollCall_time.status.dadiemdanh": 1,
-                    "ListOfStudents.ds.$.RollCall_time.time_in": now
+                    "ListOfStudents.ds.$.RollCall_time.time_in": time_str,
+                    "ListOfStudents.ds.$.RollCall_time.date": date_str
                 }
             }
         )
@@ -55,7 +58,11 @@ class AttendanceService:
             "student_id": best_student["student_id"],
             "student_name": best_student["student_name"],
             "email": best_student["email"],
-            "confidence": round(best_score, 3)
+            "confidence": round(best_score, 3),
+            "attendance_time": {
+                "date": date_str,
+                "time": time_str
+            }
         }
 
 
