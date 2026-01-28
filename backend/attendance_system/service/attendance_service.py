@@ -2,7 +2,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from attendance_system.service.face_embedding_service import FaceEmbeddingService
 from attendance_system.utils.mongodb import MongoDB
 from datetime import datetime
-
+from attendance_system.service.student_card_service import StudentCardService
 
 class AttendanceService:
     THRESHOLD = 0.8
@@ -56,4 +56,34 @@ class AttendanceService:
             "student_name": best_student["student_name"],
             "email": best_student["email"],
             "confidence": round(best_score, 3)
+        }
+
+
+    @staticmethod
+    def check_student_card(class_id: str, image_bytes: bytes):
+        student_id = StudentCardService.recognize_student_id(image_bytes)
+
+        if not student_id:
+            return {
+                "found": False,
+                "message": "Không đọc được MSSV từ thẻ"
+            }
+
+        student = StudentCardService.verify_student_in_class(
+            student_id=student_id,
+            class_id=class_id
+        )
+
+        if not student:
+            return {
+                "found": False,
+                "student_id": student_id,
+                "message": "Sinh viên không thuộc lớp này"
+            }
+
+        return {
+            "found": True,
+            "student_id": student["student_id"],
+            "student_name": student["student_name"],
+            "email": student.get("email")
         }
