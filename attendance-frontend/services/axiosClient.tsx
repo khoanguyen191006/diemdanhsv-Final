@@ -1,0 +1,14 @@
+import axios from "axios";
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8000/attendance_system/api/v1",
+  timeout: 30000,
+  withCredentials: false,
+});
+
+axiosClient.interceptors.response.use(
+  (res) => res,
+  (err) => Promise.reject(err),
+);
+
+export default axiosClient;
