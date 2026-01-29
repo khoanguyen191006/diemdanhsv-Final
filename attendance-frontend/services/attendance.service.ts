@@ -5,7 +5,7 @@ export const faceAttendance = async (classId: string, image: File) => {
   formData.append("class_id", classId);
   formData.append("image", image);
 
-  return axiosClient.post("/ateendance_view/", formData);
+  return axiosClient.post("/attendance/", formData);
 };
 
 export const checkStudentCard = async (classId: string, image: File) => {
@@ -13,5 +13,5 @@ export const checkStudentCard = async (classId: string, image: File) => {
   formData.append("class_id", classId);
   formData.append("image", image);
 
-  return axiosClient.post("/student_card/", formData);
+  return axiosClient.post("/student-card/", formData);
 };
