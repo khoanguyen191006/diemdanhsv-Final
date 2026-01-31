@@ -10,18 +10,19 @@ class StudentCardAPIView(APIView):
     parser_classes = [MultiPartParser]
 
     def post(self, request):
-        try:
-            class_id = request.data["class_id"]
-            image = request.FILES["image"].read()
+        class_id = request.data["class_id"]
+        image_file = request.FILES["image"].read()
 
-            result = AttendanceService.check_student_card(
-                class_id=class_id,
-                image_bytes=image
-            )
+        if not class_id or not image_file:
+            from attendance_system.api.responses import ErrorResponse
+        return ErrorResponse("class_id and image are required")
 
-            return SuccessResponse(
-                data=result,
-                status_code=status.HTTP_200_OK
-            )
-        except Exception as e:
-            return ErrorResponse(str(e))
+        result = AttendanceService.check_student_card(
+            class_id=class_id,
+            image_bytes=image_file.read()
+        )
+
+        return SuccessResponse(
+            data=result,
+            status_code=status.HTTP_200_OK
+        )
