@@ -1,0 +1,199 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.7">
+  <diagram name="Trang-1" id="8lrDTj3oHid8NX0EkjBm">
+    <mxGraphModel dx="3738" dy="2293" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;" value="&lt;div&gt;Camera&lt;/div&gt;&lt;div&gt;&amp;nbsp; ↓&lt;/div&gt;&lt;div&gt;Biometric Service (Face Recognition)&lt;/div&gt;&lt;div&gt;&amp;nbsp; ↓&lt;/div&gt;&lt;div&gt;Return: student_id_hash + confidence&lt;/div&gt;&lt;div&gt;&amp;nbsp; ↓&lt;/div&gt;&lt;div&gt;Gateway / Attendance Service&lt;/div&gt;&lt;div&gt;&amp;nbsp; ↓&lt;/div&gt;&lt;div&gt;Validate student belongs to class&lt;/div&gt;&lt;div&gt;&amp;nbsp; ↓&lt;/div&gt;&lt;div&gt;Write attendance record&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="290" x="660" y="-430" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=14;" value="&lt;div&gt;Cách cũ: chụp ảnh -&amp;gt; truy vấn toàn bộ embedding dựa trên class, so sánh từng cái -&amp;gt; khiến db bên cloud phải nắm cả class, course, erollemnt -&amp;gt; không đảm bao tính toàn vẹn bên db đồng thời hiệu năng cực tệ khi lớp lớn&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Cách mới: chụp ảnh -&amp;gt; dùng Vector Index Engine -&amp;gt; lấy embedding có mức giống cao nhất -&amp;gt; trả về kết quả&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="310" x="660" y="-195" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-7" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Xây dựng IaC" vertex="1">
+          <mxGeometry height="60" width="120" x="-70" y="-400" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-21" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-24" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-42" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="8wMxDN72tHJcnlqNNPcr-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-46" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Setup db" vertex="1">
+          <mxGeometry height="60" width="120" x="-180" y="-300" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-49" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="8wMxDN72tHJcnlqNNPcr-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Distributed system" vertex="1">
+          <mxGeometry height="60" width="120" x="30" y="-300" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-8" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="-290" as="sourcePoint" />
+            <mxPoint x="40" y="-220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="academic service" vertex="1">
+          <mxGeometry height="60" width="120" x="294" y="-290" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-18" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="biometric service" vertex="1">
+          <mxGeometry height="60" width="120" x="294" y="-410" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-16" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-48" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="-320" as="sourcePoint" />
+            <mxPoint x="120" y="-250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-17" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-48" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="-190" as="sourcePoint" />
+            <mxPoint x="100" y="-150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="Phải tách ra 2 loại db riêng biệt:&lt;br&gt;- RDBMS&lt;div&gt;-JSON DB&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="-360" y="-420" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="Tận dụng lợi thế tối đa ở mỗi db và tăng độ bảo mật" vertex="1">
+          <mxGeometry height="80" width="120" x="-360" y="-310" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=14;" value="&lt;div&gt;Lí do chọn RRDBMS làm Academic service:&lt;/div&gt;&lt;div&gt;- Quan hệ rõ ràng&lt;/div&gt;&lt;div&gt;- Transaction&lt;/div&gt;&lt;div&gt;- Strong consistency&lt;br&gt;- CRUD&lt;br&gt;- Audit&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Lí do chọn JSON DB cho Biometric service:&lt;/div&gt;&lt;div&gt;- Vector / blob&lt;/div&gt;&lt;div&gt;- Event / append&lt;/div&gt;&lt;div&gt;- Search / AI&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Biometric không có được thông tin gì liên quan gì đến student, bao gồm cả class, enrollment,...&lt;/div&gt;&lt;div&gt;Và Academic không được chứa thông tin liên quan đến embedding&lt;/div&gt;" vertex="1">
+          <mxGeometry height="290" width="300" x="-690" y="-430" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;div&gt;students (&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20) PRIMARY KEY,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; student_code&amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20) UNIQUE,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; full_name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;VARCHAR(255),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; email&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;VARCHAR(255),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; status&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; created_at&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; TIMESTAMP,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; updated_at&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; TIMESTAMP&lt;/div&gt;&lt;div&gt;)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="250" x="-1040" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;div&gt;&lt;div&gt;classes (&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20) PRIMARY KEY,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; class_name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(255),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; room&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(50),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; start_date&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; DATE,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; end_date&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; DATE&lt;/div&gt;&lt;div&gt;)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="230" x="-510" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;div&gt;&lt;div&gt;class_enrollments (&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; BIGSERIAL PRIMARY KEY,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; class_id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; student_id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; enrolled_at&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;TIMESTAMP,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; status&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; UNIQUE (class_id, student_id),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; FOREIGN KEY (class_id) REFERENCES classes(class_id),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; FOREIGN KEY (student_id) REFERENCES students(student_id)&lt;/div&gt;&lt;div&gt;)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="180" width="380" x="-680" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-30" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;" target="8wMxDN72tHJcnlqNNPcr-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-31" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;" target="8wMxDN72tHJcnlqNNPcr-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-60" y="380" as="sourcePoint" />
+            <mxPoint x="47" y="431" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;div&gt;&lt;div&gt;attendance_records (&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; BIGSERIAL PRIMARY KEY,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; session_id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; BIGINT,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; student_id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; confidence_score&amp;nbsp; DECIMAL(5,4),&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; status&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; check_in_time&amp;nbsp; &amp;nbsp; &amp;nbsp;TIMESTAMP,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; created_at&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; TIMESTAMP,&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; FOREIGN KEY (session_id) REFERENCES attendance_sessions(session_id),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; FOREIGN KEY (student_id) REFERENCES students(student_id)&lt;/div&gt;&lt;div&gt;)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="250" width="450" x="-1060" y="-90" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-37" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="8wMxDN72tHJcnlqNNPcr-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;div&gt;&lt;div&gt;&lt;div&gt;attendance_sessions (&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; BIGSERIAL PRIMARY KEY,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; class_id&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; VARCHAR(20),&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; session_date&amp;nbsp; &amp;nbsp; &amp;nbsp; DATE,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; start_time&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; TIME,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; end_time&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; TIME,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; created_at&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; TIMESTAMP&lt;/div&gt;&lt;div&gt;)&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="260" x="-510" y="-40" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-35" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;" target="8wMxDN72tHJcnlqNNPcr-32">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-290" y="290" as="sourcePoint" />
+            <mxPoint x="-48" y="331" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-36" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=ERzeroToMany;endFill=0;" target="8wMxDN72tHJcnlqNNPcr-32">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-150" y="200" as="sourcePoint" />
+            <mxPoint x="-142" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-40" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=14;" value="&lt;div&gt;- student: sinh viên&lt;/div&gt;&lt;div&gt;- classes: lớp&lt;/div&gt;&lt;div&gt;- class_enrollments: đăng ký lớp&lt;/div&gt;&lt;div&gt;-&lt;font&gt;&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;attendance_sessions: từng buổi điểm danh&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;- attendance_records:&amp;nbsp; sinh viên được ghi nhận trong buổi&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="300" x="-1090" y="-270" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-43" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-41" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="academic db" vertex="1">
+          <mxGeometry height="60" width="120" x="-350" y="-160" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-44" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;{&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;_id&quot;: &quot;uuid&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;student_id_hash&quot;: &quot;sha256(student_id + salt)&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;embeddings&quot;: [&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; [0.123, 0.456, ...],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; [0.234, 0.567, ...]&lt;/div&gt;&lt;div&gt;&amp;nbsp; ],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;model_version&quot;: &quot;arcface_v2&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;created_at&quot;: &quot;2026-02-18T10:00:00Z&quot;&lt;/div&gt;&lt;div&gt;}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="260" x="-200" y="-20" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-45" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="academic db" vertex="1">
+          <mxGeometry height="60" width="120" x="-190" y="-160" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-47" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-45" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-44">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="40" y="20" as="sourcePoint" />
+            <mxPoint x="-50" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-55" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-59" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-48" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Gateway" vertex="1">
+          <mxGeometry height="60" width="120" x="30" y="-200" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-50" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="AttendanceGatewayController&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="184" x="400" y="-130" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-53" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="AttendanceInternalController&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="184" x="400" y="-40" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-54" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="Phân ra:&lt;div&gt;- gateway để frrontend gọi&lt;/div&gt;&lt;div&gt;- internal để tương tác nội bộ&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="160" y="-90" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-56" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-54" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-50">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="-80" as="sourcePoint" />
+            <mxPoint x="554" y="-170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-57" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-54" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-53">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="430" y="-40" as="sourcePoint" />
+            <mxPoint x="460" y="-90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-58" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;" value="Hơi cực khâu:&lt;div&gt;- Tạo các DTO&lt;/div&gt;&lt;div&gt;- Code các service và kiểm thử&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="160" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-60" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=14;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;POST /api/v1/students&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+ Gateway route tới academic service và biometric service&lt;/span&gt;&lt;/div&gt;&lt;div&gt;-&amp;nbsp;POST /api/v1/classes&lt;br&gt;&lt;/div&gt;&lt;div&gt;-&amp;nbsp;POST /api/v1/classes/{class_id}/enrollments&lt;/div&gt;&lt;div&gt;-&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;POST /api/v1/attendance/sessions&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;POST /api/v1/attendance/check-in/face&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;-&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;POST /api/v1/attendance/check-in/student-card&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="370" x="120" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-61" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=14;" value="&lt;div&gt;Lưu ý: khi xác định được bước ảnh thì nó sẽ không biết được bối cảnh điểm danh, cụ thể là class nào, section nào&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Giải giáp: Frontend có sẵn session_id và gửi về&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="310" x="660" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-65" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="8wMxDN72tHJcnlqNNPcr-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-66" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="8wMxDN72tHJcnlqNNPcr-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Infrastructrure as Code" vertex="1">
+          <mxGeometry height="60" width="160" x="-130" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-63" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="MongoDB Cloud cho embedding:&lt;div&gt;-&amp;nbsp;IaC support tốt&lt;/div&gt;&lt;div&gt;-&amp;nbsp;JSON + metadata&lt;/div&gt;&lt;div&gt;-&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Có &lt;/span&gt;&lt;span data-start=&quot;296&quot; data-end=&quot;314&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Free Tier (M0)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="190" x="-230" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="Supabase:&lt;div&gt;-&amp;nbsp;Free tier (500mb)&lt;/div&gt;&lt;div&gt;-&amp;nbsp;Terraform support&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="190" x="-5" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-68" edge="1" parent="1" source="8wMxDN72tHJcnlqNNPcr-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="8wMxDN72tHJcnlqNNPcr-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8wMxDN72tHJcnlqNNPcr-67" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Opentofu" vertex="1">
+          <mxGeometry height="60" width="160" x="-130" y="200" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
