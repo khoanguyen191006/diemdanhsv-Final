@@ -1,8 +1,8 @@
-package com.example.academicService.controller;
+package com.example.gateway.controller.external;
 
-import com.example.academicService.dto.response.common.ResponseAPI;
-import com.example.academicService.dto.request.student.StudentUploadRequest;
-import com.example.academicService.service.StudentService;
+import com.example.gateway.dto.common.ResponseAPI;
+import com.example.gateway.dto.request.attendanceSession.AttendanceSessionCreateRequest;
+import com.example.gateway.service.AttendanceSessionService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -14,17 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/student")
 @FieldDefaults(level = AccessLevel.PUBLIC)
-public class StudentController {
-    private final StudentService studentService;
+@RequestMapping("/api/v1/attendanceSession")
+public class AttendanceSessionExternalController {
+    private final AttendanceSessionService attendanceSessionService;
+
     @PostMapping
-    ResponseAPI<String> createStudent(@RequestBody StudentUploadRequest request) {
-        var result = studentService.createStudent(request);
+    ResponseAPI<String> createAttendanceSession(@RequestBody AttendanceSessionCreateRequest request) {
+        attendanceSessionService.createSession(request);
         return ResponseAPI.<String>builder()
                 .code(HttpStatus.OK.value())
                 .message("success")
-                .data(result)
+                .data("success")
                 .build();
     }
 }

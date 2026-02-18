@@ -1,8 +1,8 @@
-package com.example.academicService.controller;
+package com.example.gateway.controller.external;
 
-import com.example.academicService.dto.request.attendanceRecord.AttendanceRecordCreateRequest;
-import com.example.academicService.dto.response.common.ResponseAPI;
-import com.example.academicService.service.AttendanceRecordService;
+import com.example.gateway.dto.common.ResponseAPI;
+import com.example.gateway.dto.request.attendanceRecord.AttendanceRecordCreateRequest;
+import com.example.gateway.service.AttendanceRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/attendanceRecord")
-public class AttendanceRecordController {
+public class AttendanceRecordExternalController {
     private final AttendanceRecordService attendanceRecordService;
 
     @PostMapping
