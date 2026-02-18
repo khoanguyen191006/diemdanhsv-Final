@@ -1,0 +1,25 @@
+server:
+  port: 9192
+
+spring:
+  application:
+    name: academicService
+  datasource:
+    url: jdbc:postgresql://aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres?user=postgres.pyglxllwiwlwtmdbgxnh&password=AcademicDatabasePassword123
+    username: postgres
+    password: AcademicDatabasePassword123
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-test-query: SELECT 1
+      validation-timeout: 3000
+      leak-detection-threshold: 60000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+    servlet:
+      multipart:
+        max-file-size: 500KB
+        max-request-size: 500KB
+
