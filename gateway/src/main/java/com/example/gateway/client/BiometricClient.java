@@ -1,6 +1,7 @@
 package com.example.gateway.client;
 
 import com.example.gateway.dto.common.ResponseAPI;
+import com.example.gateway.dto.request.student.StudentImageAndDecodeIdUploadRequest;
 import com.example.gateway.dto.response.biometric.BiometricEmbeddingResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,5 +17,5 @@ public interface BiometricClient {
     ResponseAPI<String> verifyCard(@RequestBody MultipartFile request);
 
     @PostMapping("/api/v1/embeddingImage")
-    ResponseAPI<String> embeddingImage(@RequestBody MultipartFile request);
+    ResponseAPI<String> embeddingImage(@RequestBody StudentImageAndDecodeIdUploadRequest request);
 }

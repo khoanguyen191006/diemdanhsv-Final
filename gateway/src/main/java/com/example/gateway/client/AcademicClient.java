@@ -5,8 +5,11 @@ import com.example.gateway.dto.request.attendanceRecord.AttendanceRecordCreateRe
 import com.example.gateway.dto.request.attendanceSession.AttendanceSessionCreateRequest;
 import com.example.gateway.dto.request.classes.ClassCreateRequest;
 import com.example.gateway.dto.request.enrollStudent.EnrollStudentRequest;
-import com.example.gateway.dto.request.student.StudentUploadRequest;
+import com.example.gateway.dto.request.student.StudentInfoUploadRequest;
+import com.example.gateway.dto.response.student.StudentInfoResponse;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,5 +28,8 @@ public interface AcademicClient {
     ResponseAPI<String> createClassEnrollment(@RequestBody EnrollStudentRequest request);
 
     @PostMapping("/api/v1/studentService")
-    ResponseAPI<String> createStudent(@RequestBody StudentUploadRequest request);
+    ResponseAPI<String> createStudent(@RequestBody StudentInfoUploadRequest request);
+
+    @GetMapping("/api/v1/{decodeStudentId}")
+    ResponseAPI<StudentInfoResponse> getStudentByDecodeStudentId(@PathVariable String decodeStudentId);
 }

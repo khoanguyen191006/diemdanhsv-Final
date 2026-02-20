@@ -21,7 +21,15 @@ public enum ErrorCode {
     TOKEN_BLACKLISTED(4003, "Token nằm trong danh sách đen", HttpStatus.UNAUTHORIZED),
     REFRESH_TOKEN_INVALID(4004, "Refresh token không hợp lệ", HttpStatus.UNAUTHORIZED),
     REFRESH_TOKEN_EXPIRED(4005, "Refresh token đã hết hạn", HttpStatus.UNAUTHORIZED),
-    JWT_SECRET_NOT_CONFIGURED(4006, "Chưa cấu hình JWT secret", HttpStatus.INTERNAL_SERVER_ERROR);
+    JWT_SECRET_NOT_CONFIGURED(4006, "Chưa cấu hình JWT secret", HttpStatus.INTERNAL_SERVER_ERROR),
+
+    // =========================
+    // Student (4100+)
+    // =========================
+    STUDENT_NOT_FOUND(4101, "Không tìm thấy sinh viên", HttpStatus.NOT_FOUND),
+    STUDENT_ALREADY_EXISTS(4102, "Sinh viên đã tồn tại", HttpStatus.CONFLICT),
+    STUDENT_CREATE_FAILED(4103, "Sinh viên không được tạo", HttpStatus.BAD_REQUEST),
+    STUDENT_UPDATE_FAILED(4104, "Cập nhật sinh viên thất bại", HttpStatus.BAD_REQUEST);
 
     public String formatMessage(Object... args) {
         return String.format(message, args);
