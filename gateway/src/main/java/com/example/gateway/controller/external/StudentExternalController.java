@@ -1,7 +1,9 @@
 package com.example.gateway.controller.external;
 
 import com.example.gateway.dto.common.ResponseAPI;
+import com.example.gateway.dto.request.student.StudentImageUploadRequest;
 import com.example.gateway.dto.request.student.StudentUploadRequest;
+import com.example.gateway.dto.response.student.StudentInfoResponse;
 import com.example.gateway.service.StudentService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,16 @@ public class StudentExternalController {
                 .code(HttpStatus.OK.value())
                 .message("success")
                 .data("success")
+                .build();
+    }
+
+    @PostMapping( value = "/verifyFace", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    ResponseAPI<StudentInfoResponse> verifyFace(@ModelAttribute StudentImageUploadRequest request) {
+        var result = studentService.verifyFace(request);
+        return ResponseAPI.<StudentInfoResponse>builder()
+                .code(HttpStatus.OK.value())
+                .message("success")
+                .data(result)
                 .build();
     }
 }

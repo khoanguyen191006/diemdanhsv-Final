@@ -23,4 +23,4 @@ spring:
         max-file-size: 500KB
         max-request-size: 500KB
   security:
-    studentIdHashCode: STUDENT-ID-SECRET-2026
+    studentIdSecret: 0123456789ABCDEF0123456789ABCDEF

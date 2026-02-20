@@ -12,8 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @FeignClient(name = "biometric", url = "${biometric.baseurl}")
 public interface BiometricClient {
-    @PostMapping("/api/v1/verifyFace")
-    ResponseAPI<BiometricEmbeddingResponse> verifyFace(@RequestBody MultipartFile request);
+    @PostMapping(
+            value = "/api/v1/verifyFace",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
+    ResponseAPI<BiometricEmbeddingResponse> verifyFace(@RequestPart("image") MultipartFile request);
 
     @PostMapping("/api/v1/verifyCard")
     ResponseAPI<String> verifyCard(@RequestBody MultipartFile request);

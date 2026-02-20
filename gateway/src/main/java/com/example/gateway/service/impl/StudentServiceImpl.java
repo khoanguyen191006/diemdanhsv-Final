@@ -68,7 +68,7 @@ public class StudentServiceImpl implements StudentService {
         if (decodeStudentId.getCode() != HttpStatus.OK.value()) {
             throw new ApplicationException(ErrorCode.STUDENT_NOT_FOUND);
         }
-
+        System.out.println("decodeStudentId " + decodeStudentId.getData().getStudentIdHash());
         ResponseAPI<StudentInfoResponse> studentInfoResponse =
                 academicClient.getStudentByDecodeStudentId(decodeStudentId.getData().getStudentIdHash());
 

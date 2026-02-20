@@ -14,13 +14,15 @@ class VerifyFaceService:
     def verify(cls, image_bytes: bytes) -> dict:
         try:
             collection = MongoDB.get_collection("student_face_embeddings")
-            collection.create_index("student_id_hash", unique=True)
 
-            records = list(collection.find({}, {
-                "student_id_hash": 1,
-                "embeddings": 1,
-                "model_version": 1
-            }))
+            records = list(collection.find(
+                {},
+                {
+                    "student_id_hash": 1,
+                    "embeddings": 1,
+                    "model_version": 1
+                }
+            ))
 
             if not records:
                 return {
@@ -41,23 +43,26 @@ class VerifyFaceService:
             all_scores = []
 
             for record in records:
-                record_embeddings = record["embeddings"]
-                if not record_embeddings:
+                embeddings = record.get("embeddings", [])
+                if not embeddings:
                     continue
 
-                similarities = cosine_similarity([new_emb], record_embeddings)[0]
-                max_similarity = np.max(similarities)
+                similarities = cosine_similarity([new_emb], embeddings)[0]
+                max_similarity = float(np.max(similarities))
                 all_scores.append(max_similarity)
 
                 if max_similarity > best_score:
                     best_score = max_similarity
                     best_match = record
 
-            if best_score < cls.THRESHOLD:
+            if best_score < cls.THRESHOLD or best_match is None:
                 return {
                     "found": False,
                     "confidence": round(best_score, 3),
-                    "all_scores": [round(s, 3) for s in sorted(all_scores, reverse=True)[:5]]
+                    "all_scores": [
+                        round(s, 3)
+                        for s in sorted(all_scores, reverse=True)[:5]
+                    ]
                 }
 
             return {
@@ -68,7 +73,7 @@ class VerifyFaceService:
             }
 
         except Exception as e:
-            logger.error(f"Error in face verification: {str(e)}", exc_info=True)
+            logger.error("Error in face verification", exc_info=True)
             return {
                 "found": False,
                 "message": f"Verification failed: {str(e)}"
