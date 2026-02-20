@@ -37,9 +37,9 @@ public class StudentServiceImpl implements StudentService {
         }
 
         ResponseAPI<String> imageEmbedding =
-                biometricClient.embeddingImage(buildStudentImageAndDecodeIdUploadRequest(decodeStudentId.getData() , request));
+                biometricClient.embeddingImage(decodeStudentId.getData() , request.getImage());
 
-        if (imageEmbedding.getCode() != HttpStatus.OK.value()) {
+        if (imageEmbedding.getCode() != HttpStatus.CREATED.value()) {
             throw new ApplicationException(ErrorCode.IMAGE_INVALID);
         }
     }

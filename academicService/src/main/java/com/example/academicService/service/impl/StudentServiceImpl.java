@@ -34,8 +34,8 @@ public class StudentServiceImpl implements StudentService {
         student.setEmail(request.getEmail());
         student.setStatus(request.getStatus());
         student.setCreatedAt(LocalDateTime.now());
-
         studentRepository.save(student);
+
         return encryptionService.encodeStudentId(student.getId().toString());
     }
 

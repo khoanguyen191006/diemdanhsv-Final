@@ -55,7 +55,6 @@ class EmbeddingAPIView(APIView):
                 total_embeddings = len(existing_doc["embeddings"]) + len(embeddings)
                 message = f"Added {len(embeddings)} new embeddings to existing student"
             else:
-                # Nếu chưa tồn tại, tạo document mới
                 entity = StudentEmbeddingEntity(
                     student_id_hash=student_id_hash,
                     embeddings=embeddings,
@@ -66,13 +65,8 @@ class EmbeddingAPIView(APIView):
                 message = "Created new student embedding record"
 
             return SuccessResponse(
-                data={
-                    "student_id_hash": student_id_hash,
-                    "total_embeddings": total_embeddings,
-                    "new_embeddings_added": len(embeddings),
-                    "model_version": "arcface_v2",
-                    "message": message
-                },
+                data="SUCCESS",
+                message=message,
                 status_code=status.HTTP_201_CREATED if not existing_doc else status.HTTP_200_OK
             )
 

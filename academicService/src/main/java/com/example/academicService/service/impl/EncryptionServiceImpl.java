@@ -17,7 +17,7 @@ import java.util.Base64;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EncryptionServiceImpl implements EncryptionService {
     @Value("${spring.security.studentIdHashCode}")
-    static String STUDENT_ID_HASH_CODE;
+    String STUDENT_ID_HASH_CODE;
     static String HMAC_ALGORITHM = "HmacSHA256";
 
     @Override

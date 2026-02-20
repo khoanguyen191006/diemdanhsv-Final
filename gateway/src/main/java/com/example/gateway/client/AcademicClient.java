@@ -27,9 +27,9 @@ public interface AcademicClient {
     @PostMapping("/api/v1/classEnrollment")
     ResponseAPI<String> createClassEnrollment(@RequestBody EnrollStudentRequest request);
 
-    @PostMapping("/api/v1/studentService")
+    @PostMapping("/api/v1/student")
     ResponseAPI<String> createStudent(@RequestBody StudentInfoUploadRequest request);
 
-    @GetMapping("/api/v1/{decodeStudentId}")
+    @GetMapping("/api/v1/student/{decodeStudentId}")
     ResponseAPI<StudentInfoResponse> getStudentByDecodeStudentId(@PathVariable String decodeStudentId);
 }

@@ -4,9 +4,34 @@ server:
 spring:
   application:
     name: gateway
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+      file-size-threshold: 2KB
+    jackson:
+      serialization:
+        fail-on-empty-beans: false
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 310000
+        readTimeout: 310000
+        loggerLevel: full
+        retryer: com.example.gateway.configuration.CustomRetryer
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
 
 academic:
   baseurl: http://localhost:9191
 
 biometric:
-  baseurl: http://localhost:9192
+  baseurl: http://localhost:8000

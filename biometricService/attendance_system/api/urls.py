@@ -4,7 +4,7 @@ from attendance_system.api.view.student_card_view import StudentCardAPIView
 from attendance_system.api.view.verify_face_view import VerifyFaceAPIView
 
 urlpatterns = [
-    path("api/v1/embeddingImage", EmbeddingAPIView.as_view()),
-    path("api/v1/verifyCard", StudentCardAPIView.as_view()),
-    path("api/v1/verifyFace", VerifyFaceAPIView.as_view()),
+    path("embeddingImage", EmbeddingAPIView.as_view()),
+    path("verifyCard", StudentCardAPIView.as_view()),
+    path("verifyFace", VerifyFaceAPIView.as_view()),
 ]
