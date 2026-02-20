@@ -1,6 +1,6 @@
 package com.example.gateway.exception;
 
-import com.example.academicService.dto.response.common.ResponseAPI;
+import com.example.gateway.dto.common.ResponseAPI;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

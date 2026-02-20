@@ -1,0 +1,12 @@
+server:
+  port: 9190
+
+spring:
+  application:
+    name: gateway
+
+academic:
+  baseurl: http://localhost:9191
+
+biometric:
+  baseurl: http://localhost:9192

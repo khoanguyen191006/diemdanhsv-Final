@@ -88,6 +88,10 @@ public enum ErrorCode {
     SERVICE_UNAVAILABLE(5003, "Dịch vụ tạm thời không khả dụng", HttpStatus.SERVICE_UNAVAILABLE),
     INTERNAL_SERVER_ERROR(5004, "Lỗi hệ thống", HttpStatus.INTERNAL_SERVER_ERROR);
 
+    public String formatMessage(Object... args) {
+        return String.format(message, args);
+    }
+
     private final int code;
     private final String message;
     private final HttpStatus httpStatus;
