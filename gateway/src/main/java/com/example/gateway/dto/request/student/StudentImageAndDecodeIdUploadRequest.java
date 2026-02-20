@@ -1,5 +1,6 @@
 package com.example.gateway.dto.request.student;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class StudentImageAndDecodeIdUploadRequest {
-    String studentId;
+    @JsonProperty("student_id_hash")
+    String studentIdHash;
     MultipartFile image;
 }

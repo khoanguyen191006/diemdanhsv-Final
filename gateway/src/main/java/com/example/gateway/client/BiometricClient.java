@@ -10,12 +10,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 @FeignClient(name = "biometric", url = "${biometric.baseurl}")
 public interface BiometricClient {
-    @PostMapping("/api/v1/verifyFace")
+    @PostMapping("/attendance_system/api/v1/verifyFace")
     ResponseAPI<BiometricEmbeddingResponse> verifyFace(@RequestBody MultipartFile request);
 
-    @PostMapping("/api/v1/verifyCard")
+    @PostMapping("/attendance_system/api/v1/verifyCard")
     ResponseAPI<String> verifyCard(@RequestBody MultipartFile request);
 
-    @PostMapping("/api/v1/embeddingImage")
+    @PostMapping("/attendance_system/api/v1/embeddingImage")
     ResponseAPI<String> embeddingImage(@RequestBody StudentImageAndDecodeIdUploadRequest request);
 }

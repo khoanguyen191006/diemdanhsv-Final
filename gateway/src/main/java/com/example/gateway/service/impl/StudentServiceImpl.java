@@ -56,7 +56,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentImageAndDecodeIdUploadRequest buildStudentImageAndDecodeIdUploadRequest(String studentId,
                                                                                            StudentUploadRequest request) {
         return StudentImageAndDecodeIdUploadRequest.builder()
-                .studentId(studentId)
+                .studentIdHash(studentId)
                 .image(request.getImage())
                 .build();
     }
@@ -70,7 +70,7 @@ public class StudentServiceImpl implements StudentService {
         }
 
         ResponseAPI<StudentInfoResponse> studentInfoResponse =
-                academicClient.getStudentByDecodeStudentId(decodeStudentId.getData().getId());
+                academicClient.getStudentByDecodeStudentId(decodeStudentId.getData().getStudentIdHash());
 
         if (studentInfoResponse.getCode() != HttpStatus.OK.value()) {
             throw new ApplicationException(ErrorCode.STUDENT_NOT_FOUND);
