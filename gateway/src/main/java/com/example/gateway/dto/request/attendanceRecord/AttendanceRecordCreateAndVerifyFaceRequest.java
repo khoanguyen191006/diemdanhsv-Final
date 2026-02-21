@@ -8,12 +8,11 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AttendanceRecordCreateRequest {
+public class AttendanceRecordCreateAndVerifyFaceRequest {
     String sessionId;
-    double confidenceScore;
-    String decodedStudentId;
+    MultipartFile image;
 }
+

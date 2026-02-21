@@ -1,14 +1,12 @@
 package com.example.gateway.controller.external;
 
 import com.example.gateway.dto.common.ResponseAPI;
-import com.example.gateway.dto.request.attendanceRecord.AttendanceRecordCreateRequest;
+import com.example.gateway.dto.request.attendanceRecord.AttendanceRecordCreateAndVerifyFaceRequest;
 import com.example.gateway.service.AttendanceRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AttendanceRecordExternalController {
     private final AttendanceRecordService attendanceRecordService;
 
-    @PostMapping
-    ResponseAPI<String> createAttendanceRecord(@RequestBody AttendanceRecordCreateRequest request) {
+    @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    ResponseAPI<String> createAttendanceRecord(@ModelAttribute AttendanceRecordCreateAndVerifyFaceRequest request) {
         attendanceRecordService.recordAttendance(request);
         return ResponseAPI.<String>builder()
                 .code(HttpStatus.OK.value())

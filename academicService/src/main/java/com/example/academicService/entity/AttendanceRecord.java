@@ -1,8 +1,11 @@
 package com.example.academicService.entity;
 
 import com.example.academicService.entity.common.AbstractEntity;
+import com.example.academicService.entity.common.AttendanceStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -27,7 +30,9 @@ public class AttendanceRecord extends AbstractEntity<UUID> {
     @Column(name = "confidence_score")
     BigDecimal confidenceScore;
 
-    String status;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    AttendanceStatus status;
 
     @Column(name = "check_in_time")
     LocalDateTime checkInTime;

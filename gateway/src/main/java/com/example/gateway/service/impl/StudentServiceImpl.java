@@ -53,14 +53,6 @@ public class StudentServiceImpl implements StudentService {
                 .build();
     }
 
-    private StudentImageAndDecodeIdUploadRequest buildStudentImageAndDecodeIdUploadRequest(String studentId,
-                                                                                           StudentUploadRequest request) {
-        return StudentImageAndDecodeIdUploadRequest.builder()
-                .studentIdHash(studentId)
-                .image(request.getImage())
-                .build();
-    }
-
     @Override
     public StudentInfoResponse verifyFace(StudentImageUploadRequest request) {
         ResponseAPI<BiometricEmbeddingResponse> decodeStudentId = biometricClient.verifyFace(request.getImage());
@@ -68,7 +60,7 @@ public class StudentServiceImpl implements StudentService {
         if (decodeStudentId.getCode() != HttpStatus.OK.value()) {
             throw new ApplicationException(ErrorCode.STUDENT_NOT_FOUND);
         }
-        System.out.println("decodeStudentId " + decodeStudentId.getData().getStudentIdHash());
+
         ResponseAPI<StudentInfoResponse> studentInfoResponse =
                 academicClient.getStudentByDecodeStudentId(decodeStudentId.getData().getStudentIdHash());
 

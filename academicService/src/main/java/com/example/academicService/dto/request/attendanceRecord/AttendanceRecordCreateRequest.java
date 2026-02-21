@@ -12,8 +12,7 @@ import java.math.BigDecimal;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AttendanceRecordCreateRequest {
     String sessionId;
-    String studentId;
+    String decodedStudentId;
     BigDecimal confidenceScore;
-    String status;
 }
 

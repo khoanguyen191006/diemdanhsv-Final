@@ -29,7 +29,20 @@ public enum ErrorCode {
     STUDENT_NOT_FOUND(4101, "Không tìm thấy sinh viên", HttpStatus.NOT_FOUND),
     STUDENT_ALREADY_EXISTS(4102, "Sinh viên đã tồn tại", HttpStatus.CONFLICT),
     STUDENT_CREATE_FAILED(4103, "Sinh viên không được tạo", HttpStatus.BAD_REQUEST),
-    STUDENT_UPDATE_FAILED(4104, "Cập nhật sinh viên thất bại", HttpStatus.BAD_REQUEST);
+    STUDENT_UPDATE_FAILED(4104, "Cập nhật sinh viên thất bại", HttpStatus.BAD_REQUEST),
+
+    // =========================
+    // Attendance (4300+)
+    // =========================
+    ATTENDANCE_SESSION_NOT_FOUND(4301, "Không tìm thấy buổi điểm danh", HttpStatus.NOT_FOUND),
+    ATTENDANCE_SESSION_CREATE_FAILED(4302, "Tạo buổi điểm danh thất bại", HttpStatus.BAD_REQUEST),
+
+    ATTENDANCE_RECORD_EXISTS(4303, "Sinh viên đã được điểm danh", HttpStatus.CONFLICT),
+    ATTENDANCE_RECORD_CREATE_FAILED(4304, "Không thể lưu bản ghi điểm danh", HttpStatus.BAD_REQUEST),
+
+    ATTENDANCE_OUT_OF_TIME_RANGE(4305, "Ngoài thời gian điểm danh", HttpStatus.BAD_REQUEST),
+    ATTENDANCE_TOO_EARLY(4305, "Chưa đến thời gian điểm danh", HttpStatus.BAD_REQUEST),
+    ATTENDANCE_TOO_LATE(4306, "Đã quá thời gian điểm danh", HttpStatus.BAD_REQUEST);
 
     public String formatMessage(Object... args) {
         return String.format(message, args);
