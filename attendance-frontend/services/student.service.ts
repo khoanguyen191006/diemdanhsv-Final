@@ -1,19 +1,23 @@
 import axiosClient from "./axiosClient";
 
-export const createStudent = async (data: {
-  student_id: string;
-  student_name: string;
-  class_id: string;
+export const createStudent = (data: {
+  studentCode: string;
+  fullName: string;
   email: string;
-  images: File[];
+  status: string;
+  image?: File;
 }) => {
   const formData = new FormData();
-  formData.append("student_id", data.student_id);
-  formData.append("student_name", data.student_name);
-  formData.append("class_id", data.class_id);
+  formData.append("studentCode", data.studentCode);
+  formData.append("fullName", data.fullName);
   formData.append("email", data.email);
+  formData.append("status", data.status);
 
-  data.images.forEach((img) => formData.append("images", img));
+  if (data.image) {
+    formData.append("image", data.image);
+  }
 
-  return axiosClient.post("/student/", formData);
+  return axiosClient.post("/student", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
 };

@@ -3,27 +3,44 @@
 import { useState } from "react";
 import Camera from "@/components/Camera";
 import StudentResult from "@/components/StudentResult";
-import {
-  faceAttendance,
-  checkStudentCard,
-} from "@/services/attendance.service";
+import { createAttendanceRecord } from "@/services/attendanceRecord.service";
 
 export default function HomePage() {
+  const [sessionId, setSessionId] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
 
-  const classId = "INT2201";
+  const handleAttendance = async () => {
+    if (!sessionId.trim()) {
+      alert("Vui lòng nhập sessionId");
+      return;
+    }
 
-  const handleFace = async () => {
-    if (!image) return alert("Vui lòng chụp ảnh trước");
-    const res = await faceAttendance(classId, image);
-    setResult(res.data.data);
-  };
+    if (!image) {
+      alert("Vui lòng chụp ảnh trước");
+      return;
+    }
 
-  const handleCard = async () => {
-    if (!image) return alert("Vui lòng chụp ảnh trước");
-    const res = await checkStudentCard(classId, image);
-    setResult(res.data.data);
+    try {
+      setLoading(true);
+      setResult(null);
+
+      const res = await createAttendanceRecord(sessionId, image);
+
+      setResult({
+        status: "SUCCESS",
+        message: res.data.data,
+      });
+    } catch (err) {
+      console.error(err);
+      setResult({
+        status: "FAILED",
+        message: "Xác thực hoặc điểm danh thất bại",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -32,39 +49,40 @@ export default function HomePage() {
         AI Attendance System
       </h1>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* LEFT - CAMERA */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* LEFT */}
         <div className="bg-white rounded-2xl shadow-lg p-4">
           <h2 className="font-semibold text-lg mb-3">📷 Camera</h2>
+
+          {/* SESSION ID INPUT */}
+          <input
+            placeholder="Nhập sessionId"
+            value={sessionId}
+            onChange={(e) => setSessionId(e.target.value)}
+            className="mb-3 w-full border rounded-lg p-2"
+          />
+
           <Camera onCapture={setImage} />
         </div>
 
-        {/* RIGHT - ACTION + RESULT */}
+        {/* RIGHT */}
         <div className="flex flex-col gap-6">
-          {/* SECTION 1 - ACTION */}
+          {/* ACTION */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
-            <h2 className="font-semibold text-lg mb-4">Thao tác điểm danh</h2>
+            <h2 className="font-semibold text-lg mb-4">Điểm danh buổi học</h2>
 
-            <div className="flex gap-3">
-              <button
-                onClick={handleFace}
-                className="flex-1 py-3 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-700 transition"
-              >
-                👤 Nhận diện khuôn mặt
-              </button>
-
-              <button
-                onClick={handleCard}
-                className="flex-1 py-3 rounded-xl bg-orange-500 text-white font-medium hover:bg-orange-600 transition"
-              >
-                💳 Kiểm tra thẻ SV
-              </button>
-            </div>
+            <button
+              onClick={handleAttendance}
+              disabled={loading}
+              className="w-full py-3 rounded-xl bg-purple-600 text-white font-medium hover:bg-purple-700 transition disabled:opacity-60"
+            >
+              {loading ? "Đang xử lý..." : "👤 Xác thực & Điểm danh"}
+            </button>
           </div>
 
-          {/* SECTION 2 - RESULT */}
+          {/* RESULT */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
-            <h2 className="font-semibold text-lg mb-4">Thông tin sinh viên</h2>
+            <h2 className="font-semibold text-lg mb-4">Kết quả</h2>
 
             <StudentResult data={result} />
           </div>

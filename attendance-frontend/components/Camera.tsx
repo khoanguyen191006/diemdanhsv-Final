@@ -18,8 +18,13 @@ export default function Camera({
   }, []);
 
   const startCamera = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    if (videoRef.current) videoRef.current.srcObject = stream;
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user" },
+    });
+
+    if (videoRef.current) {
+      videoRef.current.srcObject = stream;
+    }
   };
 
   const capture = () => {
@@ -34,8 +39,13 @@ export default function Camera({
 
     canvas.toBlob((blob) => {
       if (!blob) return;
-      onCapture(new File([blob], "capture.jpg", { type: "image/jpeg" }));
-    });
+
+      const file = new File([blob], "face.jpg", {
+        type: "image/jpeg",
+      });
+
+      onCapture(file);
+    }, "image/jpeg");
   };
 
   return (
@@ -46,6 +56,7 @@ export default function Camera({
         playsInline
         className="rounded-xl border w-full"
       />
+
       <button
         onClick={capture}
         className="w-full py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
